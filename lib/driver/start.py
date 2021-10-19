@@ -45,18 +45,6 @@ async def _human_time_duration(seconds):
 
 
 BOKEP = "https://telegra.ph/file/1e78b509a59fe6c04362a.mp4"
-START_MESSAGE = f"""✨ **Welcome {message.from_user.mention} !**
-
-❍ I'm online and ready for playing video on your Group video chat.
-
-❍ To see all my **feature list and the information**, Click on the » 📚 **Commands button** below
-"""
-START_EWE = f"""✨ **Hello {message.from_user.mention} !**
-
-❍ I'm online and ready for playing video on your Group video chat.
-
-❍ To see all my **feature list and the information**, Click on the » ❓ **Basic Guide button** below
-"""
 
 
 @Client.on_message(
@@ -77,6 +65,19 @@ async def start_(client, message):
     command(["start", f"start@{USERNAME_BOT}"]) & filters.group & ~filters.edited
 )
 async def start(client, message):
+    START_MESSAGE = f"""✨ **Welcome {message.from_user.mention} !**
+
+❍ I'm online and ready for playing video on your Group video chat.
+
+❍ To see all my **feature list and the information**, Click on the » 📚 **Commands button** below
+"""
+START_EWE = f"""✨ **Hello {message.from_user.mention} !**
+
+❍ I'm online and ready for playing video on your Group video chat.
+
+❍ To see all my **feature list and the information**, Click on the » ❓ **Basic Guide button** below
+"""
+
     asu = InlineKeyboardMarkup(
         [
             [
