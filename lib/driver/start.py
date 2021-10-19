@@ -63,20 +63,19 @@ async def start_(client, message):
 
 @Client.on_message(command(["start", f"start@{USERNAME_BOT}"]) & filters.group & ~filters.edited)
 async def start(client, message):
+    START_MESSAGE = f"""✨ **Welcome {message.from_user.mention} !**
 
-START_MESSAGE = f"""✨ **Welcome {message.from_user.mention} !**
+    ❍ I'm online and ready for playing video on your Group video chat.
 
-❍ I'm online and ready for playing video on your Group video chat.
+    ❍ To see all my **feature list and the information**, Click on the » 📚 **Commands button** below
+    """
 
-❍ To see all my **feature list and the information**, Click on the » 📚 **Commands button** below
-"""
+    START_EWE = f"""✨ **Hello {message.from_user.mention} !**
 
-START_EWE = f"""✨ **Hello {message.from_user.mention} !**
+    ❍ I'm online and ready for playing video on your Group video chat.
 
-❍ I'm online and ready for playing video on your Group video chat.
-
-❍ To see all my **feature list and the information**, Click on the » ❓ **Basic Guide button** below
-"""
+    ❍ To see all my **feature list and the information**, Click on the » ❓ **Basic Guide button** below
+    """
 
     asu = InlineKeyboardMarkup(
         [
