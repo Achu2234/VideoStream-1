@@ -20,6 +20,7 @@ from lib.helpers.decorators import authorized_users_only
 from lib.tg_stream import call_py
 from lib.cache.admins import admins
 from lib.config import USERNAME_BOT, SUDO_USERS
+from lib.helpers.decorators import sudo_users
 from pytgcalls.exceptions import GroupCallNotFound
 
 
