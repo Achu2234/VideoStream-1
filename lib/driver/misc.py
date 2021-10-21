@@ -16,7 +16,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>
 from datetime import datetime
 from pyrogram.types import Message
 from pyrogram import Client, filters
-from lib.helpers.decorators import authorized_users_only
 from lib.tg_stream import call_py
 from lib.cache.admins import admins
 from lib.config import USERNAME_BOT, SUDO_USERS
@@ -88,9 +87,10 @@ async def resume(client, message):
 
 
 @Client.on_message(filters.command("stop"))
-@authorized_users_only
+@sudo_users
 async def stopped(client, message):
     query = " ".join(message.command[1:])
+    user_id = message.from_user.id
     if query == "channel":
         chat_id = int(message.chat.title)
         type = "Channel"
