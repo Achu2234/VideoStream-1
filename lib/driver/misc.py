@@ -25,7 +25,7 @@ from pytgcalls.exceptions import GroupCallNotFound
 
 
 @Client.on_message(filters.command(["reload", f"reload@{USERNAME_BOT}"]))
-@authorized_users_only
+@sudo_users
 async def update_admin(client, message):
     global admins
     new_admins = []
@@ -53,7 +53,7 @@ async def repo(client, message):
 
 
 @Client.on_message(filters.command("pause"))
-@authorized_users_only
+@sudo_users
 async def pause(client, message):
     query = " ".join(message.command[1:])
     if query == "channel":
@@ -70,7 +70,7 @@ async def pause(client, message):
 
 
 @Client.on_message(filters.command("resume"))
-@authorized_users_only
+@sudo_users
 async def resume(client, message):
     query = " ".join(message.command[1:])
     if query == "channel":
