@@ -2,7 +2,9 @@ ffmpeg-python
 speedtest-cli
 git+https://github.com/pyrogram/pyrogram@master
 pafy
+psycopg2-binary
 py-tgcalls==0.8.1rc1
+sqlalchemy
 TgCrypto
 yt-dlp
 youtube-dl
