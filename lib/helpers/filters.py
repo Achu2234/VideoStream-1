@@ -25,5 +25,3 @@ private_filters = filters.private & ~ filters.edited \
     & ~ filters.via_bot & ~ filters.forwarded
 public_filters = filters.group & ~ filters.edited & \
     ~ filters.via_bot & ~ filters.forwarded
-public_filters = filters.group & ~ filters.edited & \
-    ~ filters.via_bot & ~ filters.forwarded
