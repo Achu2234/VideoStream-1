@@ -3,11 +3,11 @@ from pyrogram.types import Message
 from pyrogram import Client, filters
 from pyrogram.errors import BadRequest
 from pyrogram.types.messages_and_media import message
-from lib.helpers.decorators import sudo_users
+from lib.helpers.decorators import sudo_users_only
 
 
-@Client.on_message(filters.command("gbl"))
-@sudo_users
+@Client.on_message(filters.command("block"))
+@sudo_users_only
 async def blacklist(client: Client, message: Message):
     arg = message.text.split(None, 2)[1:]
     replied = message.reply_to_message
@@ -47,8 +47,8 @@ async def blacklist(client: Client, message: Message):
     await message.reply(f"**Blacklist access**\n**User:** {mention} | {user_id}\n**Reason:** {reason}")
 
 
-@Client.on_message(filters.command("ungbl"))
-@sudo_users
+@Client.on_message(filters.command("unblock"))
+@sudo_users_only
 async def unblacklist(client: Client, message: Message):
     replied = message.reply_to_message
     if replied:
