@@ -19,13 +19,13 @@ from pyrogram import Client, filters
 from lib.tg_stream import call_py
 from lib.cache.admins import admins
 from lib.config import USERNAME_BOT, SUDO_USERS
-from lib.helpers.decorators import sudo_users
+from lib.helpers.decorators import authorized_users_only
 from pytgcalls.exceptions import GroupCallNotFound
 
 
 
 @Client.on_message(filters.command(["reload", f"reload@{USERNAME_BOT}"]))
-@sudo_users
+@authorized_users_only
 async def update_admin(client, message):
     global admins
     new_admins = []
@@ -53,7 +53,7 @@ async def repo(client, message):
 
 
 @Client.on_message(filters.command("pause"))
-@sudo_users
+@authorized_users_only
 async def pause(client, message):
     query = " ".join(message.command[1:])
     if query == "channel":
@@ -70,7 +70,7 @@ async def pause(client, message):
 
 
 @Client.on_message(filters.command("resume"))
-@sudo_users
+@authorized_users_only
 async def resume(client, message):
     query = " ".join(message.command[1:])
     if query == "channel":
@@ -87,7 +87,7 @@ async def resume(client, message):
 
 
 @Client.on_message(filters.command("stop"))
-@sudo_users
+@authorized_users_only
 async def stopped(client, message):
     query = " ".join(message.command[1:])
     user_id = message.from_user.id
