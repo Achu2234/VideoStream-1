@@ -2,12 +2,12 @@ from io import BytesIO
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from database.database_chat_sql import load_chats_list, remove_chat_from_db
-from lib.helpers.decorators import sudo_users
+from lib.helpers.decorators import sudo_users_only
 from lib.helpers.text_helper import get_arg
 
 
 @Client.on_message(filters.command("broadcast"))
-@sudo_users
+@sudo_users_only
 async def broadcast(client: Client, message: Message):
     to_send = get_arg(message)
     success = 0
@@ -28,7 +28,7 @@ async def broadcast(client: Client, message: Message):
 
 
 @Client.on_message(filters.command("chatlist"))
-@sudo_users
+@sudo_users_only
 async def chatlist(client, message):
     chats = []
     all_chats = load_chats_list()
