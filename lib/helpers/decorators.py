@@ -1,8 +1,16 @@
 from typing import Callable
 from pyrogram import Client
 from pyrogram.types import Message
-from lib.helpers.admins import get_administrators
 from lib.config import SUDO_USERS
+from database.blacklist import is_bl
+
+
+def sudo_users(func: Callable) -> Callable:
+    async def decorator(client, message):
+        if message.from_user.id in SUDO_USERS:
+            return await func(client, message)
+
+    return decorator
 
 
 def errors(func: Callable) -> Callable:
@@ -15,23 +23,10 @@ def errors(func: Callable) -> Callable:
     return decorator
 
 
-def authorized_users_only(func: Callable) -> Callable:
-    async def decorator(client: Client, message: Message):
-        if message.from_user.id in SUDO_USERS:
-            return await func(client, message)
-
-        administrators = await get_administrators(message.chat)
-
-        for administrator in administrators:
-            if administrator == message.from_user.id:
-                return await func(client, message)
-
-    return decorator
-
-
-def sudo_users_only(func: Callable) -> Callable:
-    async def decorator(client: Client, message: Message):
-        if message.from_user.id in SUDO_USERS:
+def blacklist_users(func: Callable) -> Callable:
+    async def decorator(client, message):
+        check = is_bl(message)
+        if check is not None:
             return await func(client, message)
 
     return decorator
