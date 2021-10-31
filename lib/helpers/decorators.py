@@ -14,7 +14,7 @@ def sudo_users(func: Callable) -> Callable:
     return decorator
 
 
-def authorized_users_only(func: Callable) -> Callable:
+def sudo_users_only (func: Callable) -> Callable:
     async def decorator(client: Client, message: Message):
         if message.from_user.id in SUDO_USERS:
             return await func(client, message)
