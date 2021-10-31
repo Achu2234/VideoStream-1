@@ -17,7 +17,7 @@ import io
 import sys
 import traceback
 import speedtest
-from lib.helpers.decorators import authorized_users_only, sudo_users_only
+from lib.helpers.decorators import sudo_users_only
 from pyrogram.types import Message
 from pyrogram import Client, filters
 from pyrogram.errors import RPCError
