@@ -4,6 +4,7 @@ from database import SESSION, BASE
 
 class BlackList(BASE):
     __tablename__ = "blacklist"
+    __table_args__ = {'extend_existing': True}
     chat_id = Column(String(14), primary_key=True)
     reason = Column(UnicodeText)
 
