@@ -19,7 +19,7 @@ from pyrogram import Client, filters
 from lib.tg_stream import call_py
 from lib.cache.admins import admins
 from lib.config import USERNAME_BOT, SUDO_USERS
-from lib.helpers.decorators import sudo_users
+from lib.helpers.decorators import sudo_users_only
 from pytgcalls.exceptions import GroupCallNotFound
 
 
