@@ -130,7 +130,7 @@ async def leave(client, message):
 
 
 @Client.on_message(filters.command("invitelink"))
-@authorized_users_only
+@sudo_users_only
 async def invitelink(client, message):
     chat_id = message.chat.id
     try:
